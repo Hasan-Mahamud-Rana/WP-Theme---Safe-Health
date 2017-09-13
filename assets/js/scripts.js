@@ -125,12 +125,12 @@ jQuery('#bestSellingProducts').slick({
     fnames[0]='EMAIL'; ftypes[0]='email'; fnames[1]='FNAME'; ftypes[1]='text'; fnames[2]='LNAME'; ftypes[2]='text';
   }(jQuery));
   
-  var $mcj = jQuery.noConflict(true);
+  /*var $mcj = jQuery.noConflict(true);
   $mcj.extend($mcj.validator.messages, {
     required: "Dette felt er påkrævet.",
     remote: "Ret venligst dette felt.",
     email: "Indtast venligst en gyldig e-mail-adresse.",
-  }); 
+  }); */
 
   if ( jQuery("input#shipping_method_0_smartsend_gls_pickup").length ) {
    jQuery("input#shipping_method_0_smartsend_gls_pickup").prop("checked", true);

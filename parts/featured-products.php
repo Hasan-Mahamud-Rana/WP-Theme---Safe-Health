@@ -1,9 +1,28 @@
 <?php
 echo '<div class="row">';
 	echo '<div class="small-12 columns">';
+	$ppHeadlineStyle = get_field( "pp_headline_style" );
+	if ($ppHeadlineStyle) {
+    $ppHeadlineStyle = $ppHeadlineStyle;
+  } else {
+    $ppHeadlineStyle = "p";
+  }
+	$ppHeadlineSize	= get_field( "pp_headline_size" );
+	if ($ppHeadlineSize) {
+    $ppHeadlineSize = $ppHeadlineSize;
+  } else {
+    $ppHeadlineSize = "15";
+  }
+	$ppheadlineColor = get_field( "pp_headline_color" );
+	if ($ppheadlineColor) {
+    $ppheadlineColor = $ppheadlineColor;
+  } else {
+    $ppheadlineColor = "#000";
+  }
+	$ppStyle = ' style="font-size:'.$ppHeadlineSize.'px; color:'.$ppheadlineColor.'"';
 	$professionalProducts	 = get_field( "professional_products" );
 	if( $professionalProducts ) {  
-		echo '<p class="section-title text-center"><b></b><span class="section-title-main">' . $professionalProducts . '</span><b></b></p>';
+		echo '<'. $ppHeadlineStyle . $ppStyle .' class="section-title text-center"><b></b><span class="section-title-main">' . $professionalProducts . '</span><b></b></'. $ppHeadlineStyle .'>';
 	}
 	echo '</div>';
 echo '</div>';

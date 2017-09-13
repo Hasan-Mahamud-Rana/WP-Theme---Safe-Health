@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 wc_print_notices();
 do_action( 'woocommerce_before_cart' ); ?>
-<div class="freeNotice"></div>
+<!--div class="freeNotice"></div-->
 <div class="row">
 	<div class="small-12 medium-7 large-8 columns">
 		<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
@@ -149,19 +149,18 @@ do_action( 'woocommerce_before_cart' ); ?>
 	</div>
 </div>
 <?php do_action( 'woocommerce_after_cart' ); ?>
-
 <script type="text/javascript">
   var siteUrl = "<?php echo site_url(); ?>";
-	function getFreeNotice(){
-		jQuery('div.freeNotice').load(siteUrl + '/free-shipping div.freeShippingNotice');
-	}
+function getFreeNotice(){
+	jQuery('div.freeNotice').load(siteUrl + '/free-shipping div.freeShippingNotice');
+}
 	//getFreeNotice();
-	jQuery(document).on('click', 'input.upTotal, a.remove', function(){
-		//getFreeNotice();
-		setTimeout(function(){ 
-			if ( jQuery("input#shipping_method_0_smartsend_gls_pickup").length ) {
-	   		jQuery("input#shipping_method_0_smartsend_gls_pickup").prop("checked", true);
-	  	}
-	  }, 2500);
-	});
+jQuery(document).on('click', 'input.upTotal, a.remove', function(){
+	//getFreeNotice();
+	setTimeout(function(){ 
+		if ( jQuery("input#shipping_method_0_smartsend_gls_pickup").length ) {
+   		jQuery("input#shipping_method_0_smartsend_gls_pickup").prop("checked", true);
+  	}
+  }, 2500);
+});
 </script>

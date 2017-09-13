@@ -627,7 +627,6 @@ a.product-image > span.onsale,
 }
 .section-title span {
     margin: 0 15px;
-    color: #555;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
 }

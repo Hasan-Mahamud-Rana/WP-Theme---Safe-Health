@@ -1,9 +1,29 @@
 <?php
 echo '<div class="row">';
   echo '<div class="small-12 columns">';
-  $ourBrands   = get_field( "our_brands" );
+  $obHeadlineStyle = get_field( "ob_headline_style" );
+  if ($obHeadlineStyle) {
+    $obHeadlineStyle = $obHeadlineStyle;
+  } else {
+    $obHeadlineStyle = "p";
+  }
+  $obHeadlineSize = get_field( "ob_headline_size" );
+  if ($obHeadlineSize) {
+    $obHeadlineSize = $obHeadlineSize;
+  } else {
+    $obHeadlineSize = "15";
+  }
+  $obheadlineColor = get_field( "ob_headline_color" );
+  if ($obheadlineColor) {
+    $obheadlineColor = $obheadlineColor;
+  } else {
+    $obheadlineColor = "#000";
+  }
+  $obStyle = ' style="font-size:'.$obHeadlineSize.'px; color:'.$obheadlineColor.'"';
+
+  $ourBrands = get_field( "our_brands" );
   if( $ourBrands ) {  
-    echo '<p class="section-title text-center"><b></b><span class="section-title-main">' . $ourBrands . '</span><b></b></p>';
+    echo '<'. $obHeadlineStyle . $obStyle .' class="section-title text-center"><b></b><span class="section-title-main">' . $ourBrands . '</span><b></b></'. $obHeadlineStyle .'>';
   }
   echo '</div>';
 echo '</div>';

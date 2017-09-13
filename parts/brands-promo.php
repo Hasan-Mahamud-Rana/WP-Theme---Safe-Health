@@ -1,9 +1,24 @@
 <?php
 echo '<div class="row">';
   echo '<div class="small-12 columns">';
-  $safeHealth   = get_field( "safe_health" );
+  $shHeadlineStyle = get_field( "sh_headline_style" );
+  if ($shHeadlineStyle) {
+    $shHeadlineStyle = $shHeadlineStyle;
+  } else {
+    $shHeadlineStyle = "p";
+  }
+  $shHeadlineSize = get_field( "sh_headline_size" );
+  if ($shHeadlineSize) {
+    $shHeadlineSize = $shHeadlineSize;
+  } else {
+    $shHeadlineSize = "15";
+  }
+  $shheadlineColor = get_field( "sh_headline_color" );
+  $shStyle = ' style="font-size:'.$shHeadlineSize.'px; color:'.$shheadlineColor.'"';
+
+  $safeHealth = get_field( "safe_health" );
   if( $safeHealth ) {  
-    echo '<p class="section-title text-center"><b></b><span class="section-title-main">' . $safeHealth . '</span><b></b></p>';
+    echo '<'. $shHeadlineStyle . $shStyle .' class="section-title text-center"><b></b><span class="section-title-main">' . $safeHealth . '</span><b></b></'. $shHeadlineStyle . $ppStyle .'>';
   }
   echo '</div>';
 echo '</div>';

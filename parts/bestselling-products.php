@@ -1,9 +1,28 @@
 <?php
 echo '<div class="row">';
 	echo '<div class="small-12 columns">';
-		$bestSellingProducts	 = get_field( "best-selling_products" );
+	$bsHeadlineStyle = get_field( "bs_headline_style" );
+	if ($bsHeadlineStyle) {
+    $bsHeadlineStyle = $bsHeadlineStyle;
+  } else {
+    $bsHeadlineStyle = "p";
+  }
+	$bsHeadlineSize	= get_field( "bs_headline_size" );
+	if ($bsHeadlineSize) {
+    $bsHeadlineSize = $bsHeadlineSize;
+  } else {
+    $bsHeadlineSize = "15";
+  }
+	$bsheadlineColor = get_field( "bs_headline_color" );
+	if ($bsheadlineColor) {
+    $bsheadlineColor = $bsheadlineColor;
+  } else {
+    $bsheadlineColor = "#000";
+  }
+	$bsStyle = ' style="font-size:'.$bsHeadlineSize.'px; color:'.$bsheadlineColor.'"';
+		$bestSellingProducts = get_field( "best-selling_products" );
 		if( $bestSellingProducts ) {
-		echo '<p class="section-title text-center"><b></b><span class="section-title-main">' . $bestSellingProducts . '</span><b></b></p>';
+		echo '<'. $bsHeadlineStyle . $bsStyle .' class="section-title text-center"><b></b><span class="section-title-main">' . $bestSellingProducts . '</span><b></b></'. $bsHeadlineStyle .'>';
 		}
 	echo '</div>';
 echo '</div>';

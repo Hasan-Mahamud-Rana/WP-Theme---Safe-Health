@@ -6,7 +6,7 @@
           <a class="logo" href="<?php echo home_url(); ?>">
             <?php //bloginfo( 'name'); ?>
             <img src="<?php echo get_template_directory_uri() ?>/assets/images/Safe-Health-logo.png" alt="Indsæt alt-tekst her med relevante fokusord" width="0" height="0">
-           </a>
+          </a>
         </li>
       </ul>
     </div>

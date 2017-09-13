@@ -43,7 +43,8 @@ function custom_variable_price( $price, $product ) {
 		|| strcmp($current_user_role, "danmark_helsekost") == 0
 		|| strcmp($current_user_role, "sverige_forhandler") == 0
 		|| strcmp($current_user_role, "norge_forhandler") == 0) {
-	$prices = array( $product->get_variation_price( 'min', true ) / 1.25, $product->get_variation_price( 'max', true ) / 1.25 );
+		$variable_user_specific_price = $current_user_role . "_price";
+		#get_post_meta($product->get_id(), $variable_user_specific_price, true); 
 	} else {
 	$prices = array( $product->get_variation_price( 'min', true ), $product->get_variation_price( 'max', true ) );
 	}
@@ -54,11 +55,17 @@ function custom_variable_price( $price, $product ) {
   $saleprice = $prices[0] !== $prices[1] ? sprintf( __( 'Pris fra: %1$s', 'woocommerce' ), wc_price( $prices[0] ) ) : wc_price( $prices[0] );
 		
 		if(strcmp($current_user_role, "danmark_forhandler") == 0
-				|| strcmp($current_user_role, "danmark_helsekost") == 0
-				|| strcmp($current_user_role, "sverige_forhandler") == 0
+				|| strcmp($current_user_role, "danmark_helsekost") == 0) {
+			$userSpecificPrice = (float)get_post_meta($product->get_id(), $variable_user_specific_price, true);
+			$userSpecificPrice = (float)($userSpecificPrice / 1.25);
+			$userSpecificPrice = number_format($userSpecificPrice, 2);
+		  $price = 'Pris fra: ' . $userSpecificPrice . ' Kr.';
+		} elseif(strcmp($current_user_role, "sverige_forhandler") == 0
 				|| strcmp($current_user_role, "norge_forhandler") == 0) {
-		  $price = '' . $price . '';
-		} else {
+			$userSpecificPrice = (float)get_post_meta($product->get_id(), $variable_user_specific_price, true);
+			$userSpecificPrice = number_format($userSpecificPrice, 2);
+		  $price = 'Pris fra: ' . $userSpecificPrice . ' Kr.';
+		}	else {
 		  $price = '' . $saleprice . '';
 		}
   return $price;
